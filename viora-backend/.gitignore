@@ -1,0 +1,12 @@
+# Virtual Environment - Do not upload
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Local Database - Do not upload
+viora.db
+
+# VS Code settings
+.vscode/

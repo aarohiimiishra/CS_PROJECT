@@ -9,8 +9,15 @@ import json
 # --- 1. CONFIGURATION ---
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app = Flask(__name__)
-CORS(app) # <<< ADD THIS LINE TO FIX FRONTEND ERRORS
+# CALCULATE PARENT DIRECTORY (To find 'templates' folder outside viora-backend)
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# INITIALIZE FLASK WITH CORRECT FOLDER PATHS
+app = Flask(__name__,
+            static_folder=os.path.join(parent_dir, 'static'),
+            template_folder=os.path.join(parent_dir, 'templates'))
+
+CORS(app)
 app.config['SECRET_KEY'] = 'a_secure_and_random_string_for_viora' 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'viora.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

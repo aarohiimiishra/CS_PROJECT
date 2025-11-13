@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker - Home</title>
+    
+    <!-- 
+      This is the special Jinja2 syntax to link a CSS file.
+      Flask will look for this file in your 'static' folder.
+    -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+    <!-- 1. SHARED NAVIGATION BAR -->
+    <!-- You and your friend will copy this <nav> section 
+         to your own pages (workout.html and diet.html) -->
+    <nav>
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-brand">FitnessApp</a>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('workout') }}">Workouts</a></li>
+                <li><a href="{{ url_for('diet') }}">Diet</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 2. MAIN CONTENT -->
+    <main>
+        <h1>Welcome to Your Fitness Tracker</h1>
+        <p>This is the main landing page. Select a link above to get started.</p>
+    </main>
+
+    <!-- 3. SHARED FOOTER -->
+    <!-- You can also copy this footer to your other pages -->
+    <footer>
+        <p>&copy; 2025 CS PROJECT</p>
+    </footer>
+
+</body>
+</html>

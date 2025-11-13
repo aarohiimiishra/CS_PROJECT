@@ -555,15 +555,15 @@ def get_personalized_plan(user_id):
 # --- FRONTEND PAGE ROUTES ---
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
 @app.route('/workout')
-def workout_page():
+def workout():
     return render_template('workout.html')
 
 @app.route('/diet')
-def diet_page():
+def diet():
     return render_template('diet.html') 
 
 # --- 5. RUN THE APPLICATION ---

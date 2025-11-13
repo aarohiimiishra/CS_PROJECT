@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate # <<< ADDED FOR MIGRATION
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -545,6 +545,19 @@ def get_personalized_plan(user_id):
         "category": category,
         "plan": plan_data
     }), 200
+# --- FRONTEND PAGE ROUTES ---
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/workout')
+def workout_page():
+    return render_template('workout.html')
+
+@app.route('/diet')
+def diet_page():
+    return render_template('diet.html') 
 
 # --- 5. RUN THE APPLICATION ---
 

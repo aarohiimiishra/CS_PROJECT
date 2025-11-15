@@ -54,8 +54,13 @@
 }
 
 
-/* --- Workout List Styles --- */
+/* --- THIS IS THE NEW/UPDATED PART --- */
+
+/* Make the workout item use flexbox */
 .workout-item {
+    display: flex;
+    justify-content: space-between; /* Puts text on left, button on right */
+    align-items: center; /* Vertically aligns them */
     background-color: #ffffff;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -66,5 +71,29 @@
 
 .workout-item h3 {
     margin-top: 0;
+    margin-bottom: 0.25rem;
     color: #34495e;
+}
+
+.workout-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Style for the new delete button */
+.button-delete {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.button-delete:hover {
+    background-color: #c0392b; /* Darker red */
 }

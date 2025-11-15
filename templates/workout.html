@@ -60,15 +60,15 @@
             <!-- RIGHT SIDE: WORKOUT LIST -->
             <div class="workout-list">
                 <h2>My Logged Workouts</h2>
-                <div class="workout-item">
-                    <h3>Bench Press</h3>
-                    <p>Sets: 3, Reps: 8, Weight: 60kg</p>
-                </div>
-                <div class="workout-item">
-                    <h3>Squat</h3>
-                    <p>Sets: 4, Reps: 10, Weight: 80kg</p>
-                </div>
-                <!-- This list will be filled with real data later -->
+
+                <!-- 
+                  THIS IS THE FIX: 
+                  We give the container the ID that JavaScript is looking for.
+                -->
+                <div id="logged-workouts-container"></div> 
+                
+                <!-- This message will be shown by JavaScript if the list is empty -->
+                <p id="no-workouts-message" style="display: none;">You haven't logged any workouts yet.</p>
             </div>
 
         </div>
@@ -84,5 +84,7 @@
       We will add code here later to submit the form.
     -->
     <script src="{{ url_for('static', filename='js/workout.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
 </body>
 </html>

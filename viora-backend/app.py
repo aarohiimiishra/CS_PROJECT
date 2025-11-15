@@ -244,7 +244,7 @@ def get_diet_plan_logic(age, gender, preference, restrictions):
             for meal in plan[day]:
                 for nonveg_item, veg_alt in veg_replacements.items():
                     if nonveg_item in plan[day][meal].lower():
-                       plan[day][meal] = veg_alt
+                        plan[day][meal] = veg_alt
 
     for day in plan:
         for meal in plan[day]:
@@ -330,6 +330,18 @@ class ExerciseLog(db.Model):
     
     # For bodyweight/time-based exercises like Plank
     duration_seconds = db.Column(db.Integer, default=0)
+
+    # --- THIS IS CHANGE #1 (from last step) ---
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'workout_id': self.workout_id,
+            'exercise_name': self.exercise_name,
+            'set_number': self.set_number,
+            'weight_kg': self.weight_kg,
+            'reps': self.reps,
+            'duration_seconds': self.duration_seconds
+        }
 # -------------------------------------------------------------------
 # --- END OF MODELS ---
 
@@ -395,7 +407,7 @@ def login():
         "message": "Login successful!",
         "user_id": user.id,
         "username": user.username, 
-        "name": user.name,         
+        "name": user.name,       
         "height_cm": user.height_cm, 
         "weight_kg": user.weight_kg, 
         "age": calculate_age(user.date_of_birth) # Returns calculated age
@@ -526,6 +538,51 @@ def log_full_workout_session():
         db.session.rollback()
         return jsonify({"error": "Failed to log workout details", "details": str(e)}), 400
 # -------------------------------------------------------------------
+
+# --- THIS IS CHANGE #2 (from last step) ---
+@app.route('/api/workouts/<int:user_id>', methods=['GET'])
+def get_workouts(user_id):
+    """
+    Fetches all workout logs for a specific user.
+    """
+    try:
+        # Query the database: Get all ExerciseLog items by joining
+        # through the Workout model to find the right user_id.
+        user_workouts = db.session.query(ExerciseLog).join(Workout).filter(Workout.user_id == user_id).all()
+
+        # Convert the list of objects into a list of dictionaries
+        workouts_list = [log.to_dict() for log in user_workouts]
+        
+        return jsonify(workouts_list), 200
+    
+    except Exception as e:
+        return jsonify({"error": "Failed to fetch workouts", "details": str(e)}), 500
+
+# --- THIS IS THE NEW CHANGE (DELETE FUNCTION) ---
+@app.route('/api/workout/delete/<int:log_id>', methods=['DELETE'])
+def delete_workout_log(log_id):
+    """Deletes a specific workout log entry from the database."""
+    
+    try:
+        # Find the specific log entry in the database by its ID
+        log_to_delete = ExerciseLog.query.get(log_id)
+        
+        if not log_to_delete:
+            # If it doesn't exist, return an error
+            return jsonify({"message": "Log entry not found"}), 404
+            
+        # If we found it, delete it from the database
+        db.session.delete(log_to_delete)
+        db.session.commit()
+        
+        # Send back a success message
+        return jsonify({"message": "Workout deleted successfully!"}), 200
+        
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": "Failed to delete workout", "details": str(e)}), 500
+# -------------------------------------------------------------------
+
 @app.route('/api/workout_plan/<int:user_id>', methods=['GET'])
 def get_personalized_plan(user_id):
     user = User.query.get(user_id)

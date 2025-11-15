@@ -75,3 +75,79 @@ footer {
     color: #777;
     border-top: 1px solid #e0e0e0;
 }
+/* --- Auth Nav Styles (Add to bottom of main.css) --- */
+
+/* Welcome message */
+.nav-welcome {
+    color: #ecf0f1;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+/* Login/Register buttons */
+.nav-button-login,
+.nav-button-register {
+    border: 1px solid white;
+    padding: 0.5rem 0.75rem !important;
+}
+
+.nav-button-register {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.nav-button-register:hover {
+    background-color: #2980b9 !important;
+}
+
+/* Logout button */
+#logout-button {
+    color: #e74c3c !important; /* Red */
+}
+
+#logout-button:hover {
+    background-color: transparent !important;
+    text-decoration: underline;
+}
+
+---
+
+### **Step 3: Update ALL 5 of Your HTML Files**
+
+This is the most important part. We need to **add the `global.js` script** to *every single page*.
+
+Go into **all 5** of your HTML files (`index.html`, `workout.html`, `diet.html`, `register.html`, `login.html`):
+
+1.  Find the `<body>` section.
+2.  At the **very bottom** (just before the `</body>` tag), add this line:
+    ```html
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    
+**Example (using `workout.html`):**
+```html
+    <!-- ... (your footer) ... -->
+
+    <!-- Link to this page's JavaScript file -->
+    <script src="{{ url_for('static', filename='js/workout.js') }}"></script>
+    
+    <!-- ADD THIS LINE TO ALL 5 HTML FILES -->
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+</body>
+</html>
+
+---
+
+### **Step 4: Test It!**
+
+1.  **Save all your files** (`global.js`, `main.css`, and all 5 `.html` files).
+2.  Your server will be running.
+3.  Go to your browser at **`http://127.0.0.1:5000`**.
+4.  **Do a hard refresh (**`Ctrl + Shift + R`**)**.
+
+Because you are logged in (your `user_id` is in `localStorage`), your navigation bar should magically change!
+
+Instead of "Login" and "Register", you should now see:
+**"Welcome, [Your Name]"** and **"Logout"**.
+
+**Let me know if you see the new welcome message!**

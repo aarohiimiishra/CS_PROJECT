@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personalized Plan - VIORA</title>
+    
+    <!-- Link to styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/diet.css') }}"> <!-- Reusing diet styles for cards -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom override to center the title like the workout page */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .page-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Make the plan container wider and centered */
+        .diet-plan {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-brand">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="VIORA Logo" class="logo-img">
+                <span>VIORA</span>
+            </a>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('workout') }}">Workouts</a></li>
+                <li><a href="{{ url_for('my_plan') }}">My Plan</a></li>
+                <li><a href="{{ url_for('diet') }}">Diet</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="page-header">
+            <h1>My Personalized Workout Plan</h1>
+        </div>
+
+        <div class="content-container">
+            <!-- Full width container for the plan -->
+            <div class="diet-plan">
+                <div id="plan-info">
+                    <p>Loading your plan...</p>
+                </div>
+                
+                <div id="workout-plan-container" class="diet-plan-container">
+                    <!-- Plan cards will go here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 VIORA PROJECT</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/my_plan.js') }}"></script>
+</body>
+</html>

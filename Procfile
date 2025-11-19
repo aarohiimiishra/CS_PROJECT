@@ -1,0 +1,1 @@
+web: gunicorn viora-backend.app:app

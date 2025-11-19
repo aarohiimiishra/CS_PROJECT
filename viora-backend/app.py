@@ -631,6 +631,10 @@ def register_page():
 def login_page():
     return render_template('login.html')
 
+@app.route('/my_plan')
+def my_plan():
+    return render_template('my_plan.html')
+
 # --- 5. RUN THE APPLICATION ---
 
 if __name__ == '__main__':

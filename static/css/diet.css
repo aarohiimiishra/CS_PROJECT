@@ -1,94 +1,168 @@
 /* This file styles ONLY the diet.html page */
 
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    color: var(--primary-color); /* Red */
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* --- Layout --- */
 .content-container {
     display: flex;
-    gap: 2rem; /* Adds space between the form and the list */
+    gap: 3rem; /* Adds space between the form and the list */
+    justify-content: center; /* Centers the two boxes horizontally */
+    max-width: 1100px; /* Keeps them from getting too wide */
+    margin: 0 auto; /* Centers the container itself */
+    align-items: flex-start; /* Aligns tops of boxes */
+    flex-wrap: wrap;
 }
 
 .diet-form {
     flex: 1; /* Takes up 1 part of the space */
-    padding: 1.5rem;
-    background-color: #fdfdfd;
-    border-radius: 8px;
-    border: 1px solid #eee;
+    min-width: 300px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--secondary-color); /* Orange top border */
 }
 
 .diet-plan {
-    flex: 2; /* Takes up 2 parts of the space (wider) */
+    flex: 1.5; /* Takes up slightly more space */
+    min-width: 300px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--primary-color); /* Red top border */
 }
 
-/* --- Form Styles (re-using from workout.css) --- */
-.form-group {
+/* Headings */
+.diet-form h2,
+.diet-plan h2 {
+    color: var(--dark-text);
+    margin-top: 0;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.diet-form p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* --- Form Styles --- */
+.form-group {
+    margin-bottom: 1.2rem;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    color: #555;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Important for padding to work */
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
     background-color: white;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--secondary-color);
+    outline: none;
 }
 
 .button-primary {
-    background-color: #2ecc71; /* Green for "Generate" */
+    background-color: var(--secondary-color); /* Orange */
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 2rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 50px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .button-primary:hover {
-    background-color: #27ae60;
+    background-color: #d35400; /* Darker Orange */
+    transform: translateY(-2px);
 }
 
 
 /* --- Diet Plan Display Styles --- */
-.diet-plan-container {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 column layout */
+#diet-plan-container {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
 .day-plan {
-    background-color: #ffffff;
-    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    border-left: 4px solid var(--accent-color); /* Yellow accent */
     border-radius: 8px;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    padding: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.day-plan:hover {
+    transform: translateX(5px);
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .day-plan h3 {
     margin-top: 0;
-    color: #34495e;
-    border-bottom: 2px solid #f4f7f6;
+    color: var(--primary-color); /* Red day title */
+    border-bottom: 1px solid #eee;
     padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .day-plan ul {
     list-style: none;
     padding-left: 0;
+    margin: 0;
 }
 
 .day-plan li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    color: #444;
 }
 
 .day-plan strong {
-    color: #2c3e50;
+    color: var(--dark-text);
     min-width: 80px;
     display: inline-block;
+    font-weight: 600;
+}
+
+#placeholder-text {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    margin-top: 2rem;
 }

@@ -3,37 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Diet Plan</title>
+    <title>My Diet Plan - VIORA</title>
     
     <!-- 1. Link to the SHARED stylesheet (for the nav bar) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     
     <!-- 2. Link to THIS PAGE'S stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/diet.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- COPY the exact same <nav> from index.html -->
+    <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
-            <a href="{{ url_for('index') }}" class="nav-brand">FitnessApp</a>
+            <a href="{{ url_for('index') }}" class="nav-brand">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="VIORA Logo" class="logo-img">
+                <span>VIORA</span>
+            </a>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('workout') }}">Workouts</a></li>
+                <li><a href="{{ url_for('my_plan') }}">My Plan</a></li>
                 <li><a href="{{ url_for('diet') }}">Diet</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- MAIN CONTENT FOR THIS PAGE -->
+    <!-- MAIN CONTENT -->
     <main>
+        <div class="page-header">
+            <h1>Generate Your Diet Plan</h1>
+        </div>
+
         <div class="content-container">
             
             <!-- LEFT SIDE: DIET FORM -->
             <div class="diet-form">
                 <h2>Get My Diet Plan</h2>
-                <p>Fill out your details to generate a personalized diet plan.</p>
-                <!-- This form will be handled by JavaScript -->
+                <p>Fill out your details to generate a personalized 7-day meal plan.</p>
+                
                 <form id="get-diet-form">
                     <div class="form-group">
                         <label for="age">Your Age</label>
@@ -67,21 +76,18 @@
                 <h2>Your 7-Day Plan</h2>
                 <!-- JavaScript will add the diet plan here -->
                 <div id="diet-plan-container">
-                    <p>Your plan will appear here after you submit the form.</p>
+                    <p id="placeholder-text">Your plan will appear here after you submit the form.</p>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- COPY the exact same <footer> from index.html -->
     <footer>
-        <p>&copy; 2025 CS PROJECT</p>
+        <p>&copy; 2025 VIORA PROJECT</p>
     </footer>
 
-    <!-- Link to this page's JavaScript file -->
-    <script src="{{ url_for('static', filename='js/diet.js') }}"></script>
-
     <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/diet.js') }}"></script>
 </body>
 </html>

@@ -3,39 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Workouts</title>
+    <title>My Workouts - VIORA</title>
     
-    <!-- 1. Link to the SHARED stylesheet (for the nav bar) -->
+    <!-- Link to the SHARED stylesheet (for the nav bar) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     
-    <!-- 2. Link to THIS PAGE'S stylesheet -->
+    <!-- Link to THIS PAGE'S stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/workout.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- COPY the exact same <nav> from index.html -->
+    <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
-            <a href="{{ url_for('index') }}" class="nav-brand">FitnessApp</a>
+            <a href="{{ url_for('index') }}" class="nav-brand">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="VIORA Logo" class="logo-img">
+                <span>VIORA</span>
+            </a>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('workout') }}">Workouts</a></li>
+                <li><a href="{{ url_for('my_plan') }}">My Plan</a></li>
                 <li><a href="{{ url_for('diet') }}">Diet</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- MAIN CONTENT FOR THIS PAGE -->
+    <!-- MAIN CONTENT -->
     <main>
+        <div class="page-header">
+            <h1>TRACK YOUR PROGRESS</h1>
+        </div>
+
         <div class="content-container">
             
             <!-- LEFT SIDE: WORKOUT FORM -->
             <div class="workout-form">
                 <h2>Log a New Workout</h2>
-                <!-- 
-                  This form will send its data (using 'POST')
-                  to the '/api/workout/log_session' URL, which is in your app.py.
-                -->
                 <form id="log-workout-form">
                     <div class="form-group">
                         <label for="exercise">Exercise Name</label>
@@ -60,31 +65,18 @@
             <!-- RIGHT SIDE: WORKOUT LIST -->
             <div class="workout-list">
                 <h2>My Logged Workouts</h2>
-
-                <!-- 
-                  THIS IS THE FIX: 
-                  We give the container the ID that JavaScript is looking for.
-                -->
                 <div id="logged-workouts-container"></div> 
-                
-                <!-- This message will be shown by JavaScript if the list is empty -->
                 <p id="no-workouts-message" style="display: none;">You haven't logged any workouts yet.</p>
             </div>
 
         </div>
     </main>
 
-    <!-- COPY the exact same <footer> from index.html -->
     <footer>
-        <p>&copy; 2025 CS PROJECT</p>
+        <p>&copy; 2025 VIORA PROJECT</p>
     </footer>
 
-    <!-- 
-      Link to this page's JavaScript file.
-      We will add code here later to submit the form.
-    -->
-    <script src="{{ url_for('static', filename='js/workout.js') }}"></script>
-
     <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/workout.js') }}"></script>
 </body>
 </html>

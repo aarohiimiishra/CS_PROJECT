@@ -1,31 +1,35 @@
 /* --- Global Styles --- */
+:root {
+    /* High Energy Theme */
+    --primary-color: #e74c3c;   /* Vibrant Red (Logo background) */
+    --secondary-color: #f39c12; /* Energetic Orange */
+    --accent-color: #f1c40f;    /* Bright Yellow */
+    --dark-text: #2c3e50;       /* Dark Blue-Grey */
+    
+    /* YOUR NEW BACKGROUND COLOR */
+    --light-bg: #FFFFC5;        /* Light Yellow */
+    --section-bg: #FFFCE0;      /* Slightly different yellow for sections */
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: var(--light-bg); /* Applies the yellow globally */
+    color: var(--dark-text);
+    overflow-x: hidden;
 }
 
-main {
-    padding: 2rem;
-    max-width: 1000px;
-    margin: 20px auto; /* Center the main content */
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-h1 {
-    color: #2c3e50;
-}
-
-/* --- Navigation Bar Styles --- */
+/* --- Navigation Bar --- */
 nav {
-    background-color: #2c3e50;
+    /* Gradient from Red to Orange */
+    background: linear-gradient(135deg, #c0392b, #e67e22); 
     color: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 80px;
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav .nav-container {
@@ -34,13 +38,28 @@ nav .nav-container {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
 }
 
 nav .nav-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 800;
     color: white;
     text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: white;
 }
 
 nav ul {
@@ -48,106 +67,261 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-}
-
-nav li {
-    margin-left: 1.5rem;
+    gap: 2rem;
+    align-items: center;
 }
 
 nav a {
-    color: white;
+    color: rgba(255,255,255,0.9);
     text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 nav a:hover {
-    background-color: #34495e;
+    color: var(--accent-color);
 }
 
-/* --- Footer Styles --- */
-footer {
+/* Yellow underline animation */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--light-bg); /* Matches body background */
+    position: relative;
+}
+
+/* Decorative Orange Circle Background */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+    border-radius: 50%;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 4rem;
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--secondary-color), #d35400);
+    color: white;
+    box-shadow: 0 10px 25px rgba(211, 84, 0, 0.3);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(211, 84, 0, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-4px);
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 25px 25px 0px rgba(243, 156, 18, 0.2);
+    transition: transform 0.3s;
+}
+
+.hero-img:hover {
+    transform: scale(1.02) rotate(1deg);
+}
+
+/* --- Features Section --- */
+.features-section {
+    padding: 8rem 2rem;
+    background-color: var(--section-bg);
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    color: #777;
-    border-top: 1px solid #e0e0e0;
 }
-/* --- Auth Nav Styles (Add to bottom of main.css) --- */
 
-/* Welcome message */
+.features-section h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.features-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 8px;
+    background-color: var(--secondary-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-bottom: 6px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(231, 76, 60, 0.15);
+    border-bottom: 6px solid var(--secondary-color);
+}
+
+.feature-card .icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff8e1;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+    font-weight: 700;
+}
+
+.feature-card p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- Auth Nav Styles --- */
 .nav-welcome {
-    color: #ecf0f1;
-    font-size: 0.9rem;
-    padding: 0.5rem;
-    margin-left: 1.5rem;
-}
-
-/* Login/Register buttons */
-.nav-button-login,
-.nav-button-register {
-    border: 1px solid white;
-    padding: 0.5rem 0.75rem !important;
+    color: var(--accent-color) !important;
+    font-weight: 700;
 }
 
 .nav-button-register {
-    background-color: #3498db;
-    border-color: #3498db;
+    background-color: var(--accent-color) !important;
+    color: var(--dark-text) !important;
+    border-color: var(--accent-color) !important;
 }
 
 .nav-button-register:hover {
-    background-color: #2980b9 !important;
+    background-color: #f39c12 !important;
+    color: white !important;
 }
 
-/* Logout button */
 #logout-button {
-    color: #e74c3c !important; /* Red */
+    color: white !important;
+    opacity: 0.8;
 }
 
 #logout-button:hover {
-    background-color: transparent !important;
+    opacity: 1;
     text-decoration: underline;
 }
 
----
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #2c3e50;
+    color: rgba(255,255,255,0.7);
+}
 
-### **Step 3: Update ALL 5 of Your HTML Files**
-
-This is the most important part. We need to **add the `global.js` script** to *every single page*.
-
-Go into **all 5** of your HTML files (`index.html`, `workout.html`, `diet.html`, `register.html`, `login.html`):
-
-1.  Find the `<body>` section.
-2.  At the **very bottom** (just before the `</body>` tag), add this line:
-    ```html
-    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
-    
-**Example (using `workout.html`):**
-```html
-    <!-- ... (your footer) ... -->
-
-    <!-- Link to this page's JavaScript file -->
-    <script src="{{ url_for('static', filename='js/workout.js') }}"></script>
-    
-    <!-- ADD THIS LINE TO ALL 5 HTML FILES -->
-    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
-</body>
-</html>
-
----
-
-### **Step 4: Test It!**
-
-1.  **Save all your files** (`global.js`, `main.css`, and all 5 `.html` files).
-2.  Your server will be running.
-3.  Go to your browser at **`http://127.0.0.1:5000`**.
-4.  **Do a hard refresh (**`Ctrl + Shift + R`**)**.
-
-Because you are logged in (your `user_id` is in `localStorage`), your navigation bar should magically change!
-
-Instead of "Login" and "Register", you should now see:
-**"Welcome, [Your Name]"** and **"Logout"**.
-
-**Let me know if you see the new welcome message!**
+footer p {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
